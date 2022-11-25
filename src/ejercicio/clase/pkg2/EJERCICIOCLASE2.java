@@ -8,12 +8,13 @@ package ejercicio.clase.pkg2;
  *
  * @author Nicolas Herrera
  */
-public class EJERCICIOCLASE2 {
-
+public class EJERCICIOCLASE2 
+{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // TODO code application logic here
     }
     
