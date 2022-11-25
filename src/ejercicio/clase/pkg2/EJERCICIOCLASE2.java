@@ -4,6 +4,8 @@
  */
 package ejercicio.clase.pkg2;
 
+import logica.Controlador;
+import modelo.Archivo;
 import vista.Vista;
 
 /**
@@ -17,7 +19,11 @@ public class EJERCICIOCLASE2
      */
     public static void main(String[] args) 
     {
+        
         Vista a = new Vista();
+        Archivo b = new Archivo();
+        Controlador c = new Controlador(b, a);
+        
     }
     
 }

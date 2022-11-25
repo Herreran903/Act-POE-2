@@ -19,12 +19,14 @@ public class Archivo implements  Serializable
 {
     public static final long serialVersionUID = 1L;
     private File archivo;
+    private String nombre;
     private int cantidadPalabras;
     private int cantidadLineas;
+    private int cantidadPalabra;
 
-    public Archivo(File archivo) 
+    public Archivo() 
     {
-        this.archivo = archivo;
+        this.archivo = null;
     }
 
     public File getArchivo() 
@@ -41,10 +43,26 @@ public class Archivo implements  Serializable
     {
         return cantidadPalabras;
     }
+    
+    public int getCantidadPalabra() 
+    {
+        return cantidadPalabra;
+    }
+
+    
+    public int getCantidadLineas() 
+    {
+        return cantidadLineas;
+    }
 
     public void setCantidadPalabras(int cantidadPalabras) 
     {
         this.cantidadPalabras = cantidadPalabras;
+    }
+    
+    public void setCantidadPalabra(int cantidadPalabras) 
+    {
+        this.cantidadPalabra = cantidadPalabras;
     }
     
     public void setCantidadLineas(int cantidadLineas) 
@@ -67,6 +85,29 @@ public class Archivo implements  Serializable
         setCantidadPalabras(palabras);
     }
     
+    public void buscarPalabra(String palabra) throws IOException 
+    {
+        int palabras = 0;
+        FileReader fr = new FileReader( getArchivo() );
+        BufferedReader br = new BufferedReader(fr);
+        String linea;
+        while( (linea = br.readLine()) != null)
+        {
+            StringTokenizer st = new StringTokenizer(linea, " ");
+            int total = st.countTokens();
+            String auxPalabra = "";
+            for(int i = 0; i < total; i++)
+            {
+                auxPalabra = st.nextToken();
+                if(auxPalabra.equals(palabra))
+                {
+                    palabras++;
+                }
+            }
+        }   
+        setCantidadPalabra(palabras);
+    }
+    
     public void contarLineas() throws IOException 
     {
         int lineas = 0;
@@ -78,5 +119,16 @@ public class Archivo implements  Serializable
             lineas++;
         }   
         setCantidadLineas(lineas);
+    } 
+    
+    public void asignarNombre() throws IOException 
+    {
+        this.nombre = archivo.getName();
+        System.out.println(archivo.getName());
+    } 
+    
+    public String getNombre()
+    {
+        return nombre;
     } 
 }
