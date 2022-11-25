@@ -4,6 +4,8 @@
  */
 package ejercicio.clase.pkg2;
 
+import vista.Vista;
+
 /**
  *
  * @author Nicolas Herrera
@@ -15,7 +17,7 @@ public class EJERCICIOCLASE2
      */
     public static void main(String[] args) 
     {
-        // TODO code application logic here
+        Vista a = new Vista();
     }
     
 }
