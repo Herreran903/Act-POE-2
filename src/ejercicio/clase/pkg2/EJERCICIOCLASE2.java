@@ -10,8 +10,8 @@ import vista.Vista;
  *
  * @author Nicolas Herrera
  */
-public class EJERCICIOCLASE2 {
-
+public class EJERCICIOCLASE2 
+{
     /**
      * @param args the command line arguments
      */
