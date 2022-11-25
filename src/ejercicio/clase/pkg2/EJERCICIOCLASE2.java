@@ -4,6 +4,8 @@
  */
 package ejercicio.clase.pkg2;
 
+import vista.Vista;
+
 /**
  *
  * @author Nicolas Herrera
@@ -13,8 +15,9 @@ public class EJERCICIOCLASE2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) 
+    {
+        Vista a = new Vista();
     }
     
 }
