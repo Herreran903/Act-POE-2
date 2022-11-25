@@ -10,10 +10,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -192,4 +194,31 @@ public class Vista extends JFrame
         this.getContentPane().add(jpContenido, BorderLayout.CENTER);
         setVisible(true);
     }
+    
+    public String getPalabra()
+    {
+        return txfPalabra.getText();
+    }
+    
+    /*public int getArchivo()
+    {
+        return Integer.parseInt(txfCantidadMeses.getText());
+    }*/
+    
+    public void addBtnAgregarArchivoListener(ActionListener listenControles)
+    {
+        btnAgregarArchivo.addActionListener(listenControles);
+    }
+    
+    public void addBtnNuevoListener(ActionListener listenControles)
+    {
+        btnNuevo.addActionListener(listenControles);
+    }
+    
+    public void displayErrorMessage(String erroMessage)
+    {
+        JOptionPane.showMessageDialog(this, erroMessage);
+    }
+    
+    
 }
