@@ -11,8 +11,10 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -30,8 +33,8 @@ public class Vista extends JFrame
 {
     private Color rojoClaro;
     private Color blancoClaro;
-    final static String tablaPanel = "CardTable";
-    final static String ingresoDataPanel = "CardData";
+    final static String ingresoDatosPanel = "CardTable";
+    final static String resultadosPanel = "CardData";
     GridBagConstraints gbc = new GridBagConstraints();
     
     private JPanel jpContenido;
@@ -188,8 +191,8 @@ public class Vista extends JFrame
         
         //Adicion de los Jpanel a jpContenido y JFrame
         
-        jpContenido.add(jpIngresoDatos, tablaPanel);
-        jpContenido.add(jpResultados, ingresoDataPanel);
+        jpContenido.add(jpIngresoDatos, ingresoDatosPanel);
+        jpContenido.add(jpResultados, resultadosPanel);
         
         this.getContentPane().add(jpContenido, BorderLayout.CENTER);
         setVisible(true);
@@ -220,5 +223,60 @@ public class Vista extends JFrame
         JOptionPane.showMessageDialog(this, erroMessage);
     }
     
+    public File getArchivo()
+    {
+        File archivo = null;
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de Texto", "txt", "text");
+        fileChooser.setFileFilter(filtro);
+        
+        int seleccion= fileChooser.showOpenDialog(this);
+        if(seleccion != JFileChooser.CANCEL_OPTION)
+        {
+            archivo = fileChooser.getSelectedFile();
+        }
+        
+        return archivo;
+    }
     
+    public void actualizarCantidadPalabras(int auxCantidadPalabras)
+    {
+        lblCantidadPalabras.setText("CANTIDAD DE PALABRAS: " + auxCantidadPalabras);
+    }
+    
+    public void actualizarCantidadPalabra(String auxPalabra ,int auxCantidadPalabra)
+    {
+        if(!auxPalabra.equals(""))
+        {
+            lblCantidadPalabra.setText(auxPalabra + ": " + auxCantidadPalabra);
+        }
+        else
+        {
+            lblCantidadPalabra.setText("NO SE ELIGIO NINGUNA PALABRA");
+        }   
+    }
+    
+    public void actualizarCantidadLineas(int auxCantidadLineas)
+    {
+        lblCantidadLineas.setText("CANTIDAD DE LINEAS: " + auxCantidadLineas);
+    }
+    
+    public void actualizarNombreArchivo(String auxNombreArchivo)
+    {
+        lblNombreArchivo.setText("NOMBRE ARCHIVO: " + auxNombreArchivo);
+    }
+    
+    public void pagResultados()
+    {
+        CardLayout a = (CardLayout)jpContenido.getLayout();
+        a.show(jpContenido, resultadosPanel);
+    }
+    
+    public void pagIngresoDatos()
+    {
+        txfPalabra.setText("");
+        CardLayout a = (CardLayout)jpContenido.getLayout();
+        a.show(jpContenido, ingresoDatosPanel);
+    }     
 }
