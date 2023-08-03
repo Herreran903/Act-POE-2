@@ -1,4 +1,4 @@
-# EJERCICIO-CLASE-2
+# Act-POE-2
 Objetivos:
 
 Diseño Orientado a Objetos
